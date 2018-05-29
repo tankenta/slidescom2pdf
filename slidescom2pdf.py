@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import glob
 import time
 import getpass
 
@@ -52,6 +53,15 @@ def get_slides_ss(uname, email, passwd, deck_name, ss_dir):
             break
     return ss_idx
 
+def make_ss_dir(ss_dir):
+    if os.path.isdir(ss_dir):
+        old_files = glob.glob(os.path.join(ss_dir, '*'))
+        for old_file in old_files:
+            if os.path.isfile(old_file):
+                os.remove(old_file)
+    else:
+        os.makedirs(ss_dir)
+
 def main():
     for info in INPUT_INFO.values():
         if len(info['value']) == 0:
@@ -59,6 +69,7 @@ def main():
     passwd = getpass.getpass('your password: ')
 
     info = INPUT_INFO
+    make_ss_dir(info['ss_dir']['value'])
     num_ss = get_slides_ss(
             info['uname']['value'], info['email']['value'],
             passwd, info['deck_name']['value'], info['ss_dir']['value'])
