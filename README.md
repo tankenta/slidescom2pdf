@@ -7,6 +7,7 @@ Short python script to export your slides (decks) created on slides.com as PDF f
 	- selenium 3.11.0
 * Chromium 65.0
 * ChromeDriver 2.38
+* ImageMagick 6.7.7
 
 ## Usage
 Just run the script without arguments.
@@ -15,7 +16,7 @@ Then, you are prompted to enter information on the slides.com account and output
 ./slidescom2pdf.py
 ```
 
-By describing some information in `config.py`, it is possible to omit some information input at the time of script execution
+By describing some information in `config.py`, it is possible to omit some information input at the time of script execution.
 
 ### Config parameters
 * `SLIDE_SIZE`: Size of temporary screenshot files. (width, height)
@@ -26,3 +27,6 @@ By describing some information in `config.py`, it is possible to omit some infor
 * `SS_DIR`: Path to the temporary directory you save screenshots in.
 * `PDF_FNAME`: Name of the PDF file you will get.
 
+## ToDo
+* [ ] Handle login with Google and Facebook
+* [ ] Add slide position initialization process
