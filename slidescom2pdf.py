@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
 import glob
@@ -16,7 +16,7 @@ from config import *
 def get_slides_ss(uname, email, passwd, deck_name, ss_dir):
     options = Options()
     options.add_argument('--headless')
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(options=options)
     driver.set_window_size(*SLIDE_SIZE)
 
     driver.get('https://slides.com/users/sign_in')
@@ -28,9 +28,9 @@ def get_slides_ss(uname, email, passwd, deck_name, ss_dir):
         (By.CLASS_NAME, 'picture')))
     driver.get('https://slides.com/{}/{}/live#/'.format(uname, deck_name))
     WebDriverWait(driver, 5).until(EC.presence_of_element_located(
-        (By.XPATH, '//footer/button')))
+        (By.XPATH, '//footer/button[2]')))
     time.sleep(2)
-    driver.find_element_by_xpath('//footer/button').click()
+    driver.find_element_by_xpath('//footer/button[2]').click()
 
     ss_idx = 0
     while True:
