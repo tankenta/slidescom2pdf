@@ -16,7 +16,7 @@ from config import *
 def get_slides_ss(uname, email, passwd, deck_name, ss_dir):
     options = Options()
     options.add_argument('--headless')
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(options=options)
     driver.set_window_size(*SLIDE_SIZE)
 
     driver.get('https://slides.com/users/sign_in')
